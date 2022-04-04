@@ -62,9 +62,13 @@ if (!isset($_GET['tenSP']) || $_GET['tenSP'] == NULL) {
                                                 <h4>Giá:</h4><p><?php echo $fm->format_currency($result['giaBan']) ?><span>đ</span></p>
                                             </div>
                                             <div class="description">
+                                                <h5>Số lượng đã bán: <?php echo $result['soldcount'] ?></h5>
+                                            </div>
+                                            <div class="description">
                                                 <h3>Mô tả:</h3>
                                                 <p><?php echo $result['dvt'] ?></p>
                                             </div>
+                                            
                                             <div class="product__details__quantity">
                                                 <div class="quantity">
                                                     <div class="pro-qty">

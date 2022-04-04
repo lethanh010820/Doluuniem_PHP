@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
     }
 
     button {
-        background-color: #4CAF50;
+        background-color: #FF6F61;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;

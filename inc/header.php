@@ -41,12 +41,23 @@ $totalQty = $ct->getTotalQtyByUserId();
 </head>
 
 <body>
+    <style>
+    .a-nav {
+        color: white;
+    }
+    .dk {
+        margin-right: 10px;
+    }
+    .a-nav:hover {
+        color: black;
+    }
+    </style>
     <!-- Top bar Start -->
     <div class="top-bar">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <i class="fa fa-envelope"></i>
+                    <i class="fa fa-user"></i>
                     <?php
                     $name = Session::get('customer_name');
                     echo $name;
@@ -55,7 +66,7 @@ $totalQty = $ct->getTotalQtyByUserId();
                 <div class="col-sm-6">
                     <i class="fa fa-phone-alt"></i>
                     <?php
-                    $user = Session::get('userId');
+                    $user = Session::get('customer_sdt');
                     echo $user;
                     ?>
                 </div>
@@ -77,18 +88,16 @@ $totalQty = $ct->getTotalQtyByUserId();
                     <div class="navbar-nav mr-auto">
                         <a href="./index.php" class="nav-item nav-link active">Trang chủ</a>
                         <a href="./product.php" class="nav-item nav-link">Sản phẩm</a>
-                        <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
-                        <a href="cart.html" class="nav-item nav-link">Cart</a>
-                        <a href="checkout.html" class="nav-item nav-link">Checkout</a>
-                        <a href="my-account.html" class="nav-item nav-link">My Account</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
-                            <div class="dropdown-menu">
-                                <a href="wishlist.html" class="dropdown-item">Wishlist</a>
-                                <a href="login.html" class="dropdown-item">Login & Register</a>
-                                <a href="contact.html" class="dropdown-item">Contact Us</a>
-                            </div>
-                        </div>
+                        <?php 
+                                 $login = Session::get('customer_login');
+                                 if($login == false){
+                                   echo '';
+                                  }else
+                                  {
+                                    echo '<a href="./profile.php" class="nav-item nav-link">Thông tin</a>';
+                                    echo '<a href="./bill.php" class="nav-item nav-link">Đơn hàng</a>';
+                                   }
+                            ?> 
                     </div>
                     <?php
                     $check = Session::get('customer_login');
@@ -96,7 +105,7 @@ $totalQty = $ct->getTotalQtyByUserId();
                     ?>
 
                         <div class="header__top__right__social">
-                            <a href="register.php"><i></i> Đăng ký</a>
+                            <a class="a-nav dk" href="register.php"><i></i> Đăng ký</a>
                         </div><?php
                             }
                                 ?>
@@ -104,9 +113,9 @@ $totalQty = $ct->getTotalQtyByUserId();
                         <?php
                         $check = Session::get('customer_login');
                         if ($check == false) {
-                            echo '<a href="login.php"><i class="fa fa-user"></i> Login</a>';
+                            echo '<a class="a-nav" href="login.php"><i class="fa fa-user"></i> Login</a>';
                         } else {
-                            echo '<a href="logout.php"><i class="fa fa-user"></i>Logout</a></div>';
+                            echo '<a class="a-nav" href="logout.php"><i class="fa fa-user"></i>Logout</a></div>';
                         }
                         ?>
                     </div>

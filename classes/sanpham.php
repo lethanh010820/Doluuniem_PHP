@@ -57,5 +57,14 @@ class sanpham
 		}
 		return false;
 	}
+	public function updateQty($maSP, $quantity)
+    {
+        $query = "UPDATE sanpham SET quantity = quantity - $quantity, soldcount = soldcount + $quantity WHERE maSP = $maSP";
+        $mysqli_result = $this->db->update($query);
+        if ($mysqli_result) {
+            return true;
+        }
+        return false;
+    }
 }
 ?>

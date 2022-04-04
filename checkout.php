@@ -5,7 +5,28 @@ $list = $ct->get();
 $totalPrice = $ct->getTotalPriceByUserId();
 $userInfo = $nguoidung->get();
 ?>
+<style>
+    .cart-btn{
+        width: 164px;
+        height: 38px;
+        background-color: #FF6F61;
+        text-align: center;
+        border-radius: 15px;
+        line-height: 38px;
+        margin: 0 15px 0 10px;
+        
+        float: left;
+    }
+    .cart-btn:hover{
+        opacity: 0.5;
 
+    }
+    .cart-btn > a{
+        
+        color: white;
+
+    }
+    </style>
 <!-- Breadcrumb Start -->
 <div class="breadcrumb-wrap">
     <div class="container-fluid">
@@ -32,7 +53,6 @@ $userInfo = $nguoidung->get();
                                     <tr>
                                         <th>STT</th>
                                         <th>Tên sản phẩm</th>
-                                        <th>Hình ảnh</th>
                                         <th>Đơn giá</th>
                                         <th>Số lượng</th>
                                         <th>Thao tác</th>
@@ -48,12 +68,8 @@ $userInfo = $nguoidung->get();
                                             </td>
                                             <td>
                                                 <div class="img">
+                                                <a href="#"><img src="admin/uploads/<?= $value['image'] ?>" alt="Image"></a>
                                                     <p><?= $value['tenSP'] ?></p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="img">
-                                                    <a href="#"><img src="admin/uploads/<?= $value['image'] ?>" alt="Image"></a>
                                                 </div>
                                             </td>
                                             <td><?= number_format($value['giaBan'], 0, '', ',') ?>VND </td>
@@ -84,8 +100,10 @@ $userInfo = $nguoidung->get();
                                     <h2>Tổng tiền:<span id="totalcart"><?= number_format($totalPrice['total'], 0, '', ',') ?>VND</span></h2>
                                 </div>
                                 <div class="cart-btn">
+                                    <a href="checkout.php">Cập nhật giỏ hàng</a>
+                                </div>
+                                <div class="cart-btn">
                                     <a href="add_order.php">Tiến hành đặt hàng</a>
-                                    <button>Checkout</button>
                                 </div>
                             </div>
                         </div>

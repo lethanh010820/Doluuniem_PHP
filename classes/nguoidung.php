@@ -35,6 +35,7 @@ class nguoidung
 			Session::set('customer_user', $value['username']);
 			Session::set('userId', $value['id']);
 			Session::set('customer_name', $value['name']);
+			Session::set('customer_sdt', $value['phone']);
 			echo '<script> alert("Đăng nhập thành công!"); location.href = "/shopluuniem/index.php"; </script>';
 		} else {
 			$alert = '<span class="text-danger" > Sai tài khoản hoặc mật khẩu</span>';
@@ -95,6 +96,35 @@ class nguoidung
 			return $result;
 		}
 		return false;
+	}
+	public function Get_User($username)
+	{
+		$query = "SELECT *
+				  FROM users
+				  WHERE username = '$username'";
+		$result_check = $this->db->select($query);
+		return $result_check;
+	}
+	public function Update_User($data, $userr)
+	{
+		$name = mysqli_real_escape_string($this->db->link, $data['name']);
+		$address = mysqli_real_escape_string($this->db->link, $data['address']);
+		$phone = mysqli_real_escape_string($this->db->link, $data['phone']);
+		$password = mysqli_real_escape_string($this->db->link, $data['password']);
+		if ($name == ""   || $address == "" || $phone == "") {
+			$alert = "<span>Vui lòng không để trống thông tin</span>";
+			return $alert;
+		} else {
+			$query = "UPDATE users SET name='$name', address='$address', phone='$phone',password=md5('$password') WHERE username = '$userr'";
+			$result = $this->db->update($query);
+			if ($result) {
+				$alert = '<span class="text-success" >Cập nhật thông tin thành công </span>';
+				return $alert;
+			} else {
+				$alert = '<span class="text-danger">Lỗi. Cập nhật thông tin không thành công</span>';
+				return $alert;
+			}
+		}
 	}
 }
 

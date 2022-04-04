@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     }
 
     button {
-        background-color: #4CAF50;
+        background-color: #FF6F61;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                         echo $loginCus;
                     }
         ?>   
-        <button type="submit" name="login">Login</button>
+        <button type="submit" name="login">Đăng nhập</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Lưu tài khoản
     </label>
