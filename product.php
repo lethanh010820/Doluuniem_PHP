@@ -27,10 +27,10 @@ include "inc/header.php";
 
                                     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                                         $name = $_POST['search'];
-                                        echo "<h2>Search By '$name'</h2>";
+                                        echo "<h2>Tìm kiếm theo '$name'</h2>";
                                     } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['namepro'])) {
                                         $name = $_GET['namepro'];
-                                        echo "<h2>Search By '$name'</h2>";
+                                        echo "<h2>Tìm kiếm theo '$name'</h2>";
                                     } else {
                                         echo '<h2>TẤT CẢ SẢN PHẨM</h2>';
                                     }
@@ -86,7 +86,7 @@ include "inc/header.php";
                                         </div>
                                         <div class="product-price">
                                             <h3><?php echo   $fm->format_currency($result['giaBan']) ?><span>đ</span></h3>
-                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                            <a class="btn" href="add_cart.php?maSP=<?= $result['maSP'] ?>"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@ include "inc/header.php";
                                         </div>
                                         <div class="product-price">
                                             <h3><?php echo   $fm->format_currency($result['giaBan']) ?><span>đ</span></h3>
-                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                            <a class="btn" href="add_cart.php?maSP=<?php echo $result['maSP'] ?>"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +211,8 @@ include "inc/header.php";
                                     </div>
                                     <div class="product-price">
                                         <h3><?php echo   $fm->format_currency($result['giaBan']) ?><span>đ</span></h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a class="btn" href="add_cart.php?maSP=<?= $result['maSP'] ?>"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                        
                                     </div>
                                 </div>
                         <?php
@@ -229,7 +230,11 @@ include "inc/header.php";
 </div>
 <!-- Product List End -->
 
-
+<style>
+    .product-item img {
+        height: 350px;
+    }
+</style>
 <!-- Brand End -->
 <?php
 include "inc/footer.php";

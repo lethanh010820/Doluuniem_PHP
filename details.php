@@ -170,7 +170,7 @@ if (!isset($_GET['tenSP']) || $_GET['tenSP'] == NULL) {
                 ?>
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="details.php?proname=<?php echo $result['tenSP'] ?>"><?php echo $result['tenSP'] ?></a>
+                                <a href="details.php?tenSP=<?php echo $result['tenSP'] ?>"><?php echo $result['tenSP'] ?></a>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>

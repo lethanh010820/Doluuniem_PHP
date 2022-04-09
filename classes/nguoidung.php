@@ -36,6 +36,7 @@ class nguoidung
 			Session::set('userId', $value['id']);
 			Session::set('customer_name', $value['name']);
 			Session::set('customer_sdt', $value['phone']);
+			Session::set('role_id', $value['idRoles']);
 			echo '<script> alert("Đăng nhập thành công!"); location.href = "/shopluuniem/index.php"; </script>';
 		} else {
 			$alert = '<span class="text-danger" > Sai tài khoản hoặc mật khẩu</span>';
@@ -57,7 +58,7 @@ class nguoidung
 			$alert = '<span class="text-danger">Vui lòng không để trống thông tin</span>';
 			return $alert;
 		} else {
-			$check = "SELECT * FROM users ";
+			$check = "SELECT * FROM users";
 			$result_check = $this->db->select($check);
 			$data = mysqli_fetch_array($result_check);
 			$check_phone = $data['phone'];

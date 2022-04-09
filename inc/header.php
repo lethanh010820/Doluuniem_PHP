@@ -139,7 +139,7 @@ $totalQty = $ct->getTotalQtyByUserId();
                 <div class="col-md-6">
                     <div class="search">
                         <form action="product.php" method="GET">
-                            <input type="text" name="namepro" placeholder="Search">
+                            <input type="text" name="namepro" placeholder="Tìm kiếm">
                             <button><i class="fa fa-search"></i></button>
                         </form>
                     </div>

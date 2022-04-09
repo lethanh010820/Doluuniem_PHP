@@ -56,11 +56,11 @@ class bill
             VALUES(
                 NULL,
                 $orderId,
-                ".$value['maSP'].",
-                ".$value['quantity'].",
-                ".$value['giaBan'].",
-                '".$value['tenSP']."',
-                '".$value['image']."'
+                " . $value['maSP'] . ",
+                " . $value['quantity'] . ",
+                " . $value['giaBan'] . ",
+                '" . $value['tenSP'] . "',
+                '" . $value['image'] . "'
             )";
             echo $sql_insert_order_details;
             $insert_order_details = $this->db->insert($sql_insert_order_details);
@@ -95,10 +95,32 @@ class bill
     }
     public function completeOrder($id)
     {
-        $query = "UPDATE bill SET status = 'Complete', receivedDate = '".date('y/m/d')."' WHERE id = $id";
+        $query = "UPDATE bill SET status = 'Complete', receivedDate = '" . date('y/m/d') . "' WHERE id = $id";
         $mysqli_result = $this->db->update($query);
         if ($mysqli_result) {
             return true;
+        }
+        return false;
+    }
+    public function getListBill()
+    {
+        $query = "SELECT bill.*, users.name as name
+			 FROM bill INNER JOIN users ON bill.userId = users.id
+			 order by bill.id desc";
+        $mysqli_result = $this->db->select($query);
+        if ($mysqli_result) {
+            $result = mysqli_fetch_all($this->db->select($query), MYSQLI_ASSOC);
+            return $result;
+        }
+        return false;
+    }
+    public function getById($id)
+    {
+        $query = "SELECT * FROM bill WHERE id = '$id' ";
+        $mysqli_result = $this->db->select($query);
+        if ($mysqli_result) {
+            $result = mysqli_fetch_all($this->db->select($query), MYSQLI_ASSOC)[0];
+            return $result;
         }
         return false;
     }

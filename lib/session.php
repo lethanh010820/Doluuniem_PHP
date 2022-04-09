@@ -27,7 +27,8 @@ class Session
    public static function checkSession($type)
    {
       self::init();
-      if (self::get("customer_login") == false) {
+      if (self::get("customer_login") == false) 
+      {
          if ($type == 'admin') {
             header("Location:../login.php");
          }
